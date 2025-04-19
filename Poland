@@ -1,0 +1,8 @@
+[Interface]
+Address = 192.168.6.189/32
+DNS = 1.1.1.1,8.8.8.8
+PrivateKey = sOOjFX+CQOXiY1oUldI0xg+cmjFB0QmC6XlWDeRwrU4=
+[Peer]
+publickey=/tuTh697w8tQsId0ET63byKyi3jdIlHNpFkGVmeXuw4=
+AllowedIPs = 0.0.0.0/0, ::/0
+Endpoint = pl2.vpnjantit.com:1024
