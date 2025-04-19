@@ -1,7 +1,7 @@
 [Interface]
-Address = 192.168.6.201/32
+Address = 192.168.6.233/32
 DNS = 1.1.1.1,8.8.8.8
-PrivateKey = aNlhsLmSICFhXoyd8q6TjECi6Hutc+adL214RcYxxnI=
+PrivateKey = uIC69D23kYBVZkW9397HzlknSJgQKzv53wlRVkckEHs=
 [Peer]
 publickey=ldS3sNWispTQFjzBW0H4TRuvQYlDWviao6588AiFA3U=
 AllowedIPs = 0.0.0.0/0, ::/0
