@@ -1,0 +1,10 @@
+
+[Interface]
+PrivateKey = CCCPNPAbaDC8qcElXnLTtOOsErDQLaFEuNsoWrV4EHo=
+Address = 10.7.0.154/32
+DNS = 1.1.1.1, 1.0.0.1
+
+[Peer]
+PublicKey = f0GDOx4LwVH/N+mmfFdxR4dhi1bJdtRyBvFYBmq6X0k=
+AllowedIPs = 0.0.0.0/0
+Endpoint = wireguard-us-1.vpnv.cc:51820
