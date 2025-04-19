@@ -1,0 +1,8 @@
+[Interface]
+Address = 192.168.6.86/32
+DNS = 1.1.1.1,8.8.8.8
+PrivateKey = EGCsVrcTC6Hb8al6yyn98OLs1eOUF86K2TZEdxzIrXw=
+[Peer]
+publickey=EA6LNu4SWrCWp5XzbPNNBwRmabb2m0trfjtvcIHdEnQ=
+AllowedIPs = 0.0.0.0/0, ::/0
+Endpoint = ca1.vpnjantit.com:1024
