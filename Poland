@@ -1,76 +1,116 @@
-{
-  "log": {
-    "loglevel": "warning"
-  },
-  "inbounds": [
-    {
-      "listen": "127.0.0.1",
-      "port": 1080,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
-      },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": ["http", "tls"]
-      },
-      "tag": "socks"
-    }
-  ],
-  "outbounds": [
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "nl2.vpnjantit.com",
-            "port": 10004,
-            "users": [
-              {
-                "id": "2e2c34e4-26b0-11f0-9505-3f1337edf7e",
-                "encryption": "none",
-                "level": 8,
-                "security": "auto"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "nl2.vpnjantit.com",
-          "allowInsecure": false
-        },
-        "wsSettings": {
-          "path": "/vless",
-          "headers": {
-            "Host": "nl2.vpnjantit.com"
-          }
-        }
-      },
-      "tag": "proxy"
-    },
-    {
-      "protocol": "freedom",
-      "settings": {},
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {
-        "response": {
-          "type": "http"
-        }
-      },
-      "tag": "block"
-    }
-  ],
-  "routing": {
-    "domainStrategy": "IPIfNonMatch",
-    "rules": []
-  }
-}
+client
+dev tun
+proto udp
+remote pl1.vpnjantit.com 2500
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+remote-cert-tls server
+auth SHA512
+cipher AES-256-CBC
+ignore-unknown-option block-outside-dns
+block-outside-dns
+verb 3
+link-mtu 1603
+auth-nocache
+tls-client
+tls-version-min 1.2
+tls-cipher TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256
+setenv opt block-outside-dns
+
+<ca>
+-----BEGIN CERTIFICATE-----
+MIIDSzCCAjOgAwIBAgIUK9GjTBd/tsFH9ChSkS0kulkbEbAwDQYJKoZIhvcNAQEL
+BQAwFjEUMBIGA1UEAwwLRWFzeS1SU0EgQ0EwHhcNMjIxMDE4MDIzMTUwWhcNMzIx
+MDE1MDIzMTUwWjAWMRQwEgYDVQQDDAtFYXN5LVJTQSBDQTCCASIwDQYJKoZIhvcN
+AQEBBQADggEPADCCAQoCggEBAL9SaJdrRV7z4N+pDr2OjceY9DaEiPxsb7DSym+K
+Py67XTltec9aKGX9n5iIQ316VKt0eTzp1H7xz8cb2i7nflWHoau7A/eEGyYLyDYb
+SkBsWy33E10JBFzdSjZ+a5qiCffhLwPLVrSykFLdaHhdQXM5pbNNRfxmNTXpgKpX
+XWEQhciLDSwcFbmYuHO26w57nS10Q69K8avshbYY2H+L1v1WNZIO9a/c9/xb+3tx
+3DVkk6Y6ofC8zH6l1mSZOVjaZ5M2ljhO5dG2xRO/eD8ZNfsH+oTXJn3wTw/E23Ka
+baV5VzXPnG7KCOqzVCRoF2YGAH594+e4F9ueM5Cq+16LV2MCAwEAAaOBkDCBjTAM
+BgNVHRMEBTADAQH/MB0GA1UdDgQWBBQJa0S2r4cIdfipicKy60Jkxx089jBRBgNV
+HSMESjBIgBQJa0S2r4cIdfipicKy60Jkxx089qEapBgwFjEUMBIGA1UEAwwLRWFz
+eS1SU0EgQ0GCFCvRo0wXf7bBR/QoUpEtJLpZGxGwMAsGA1UdDwQEAwIBBjANBgkq
+hkiG9w0BAQsFAAOCAQEARvjy+la5hKChOcn4jZT7im+3qJp8CXKnRiXHrpmymjbp
+Sy+Ump9kVb3xP/i2zY0hFDMDC/O+o5KRlEXiEQmEYHjFY3b3gklUNzBRVA2rndUi
+95wl/fDuU/pdvVO59Qd7HdzoWGgRDsWQLDopfAJW5CZxXSCt0IwUEhETz4LDETeC
+hz0qIrBZtEbxPSv+1+XRo3ghqtRnr58oxOTiFWaxOaS3a2ffv1RVpHhSbkVYLpaw
+XRGpdPe2HDTS6usbdgaKUcixv12+B9yGp/MJHlisBgVTzJ14/a0LgytDzipDZyQe
+lXpaa61nXuvnHjLf+xuwJzaTKuveCJNhCpXezbGrfg==
+-----END CERTIFICATE-----
+</ca>
+<cert>
+-----BEGIN CERTIFICATE-----
+MIIDYzCCAkugAwIBAgIRAN7oxZRrGL3zrSmdAeABUCQwDQYJKoZIhvcNAQELBQAw
+FjEUMBIGA1UEAwwLRWFzeS1SU0EgQ0EwHhcNMjUwNDI1MTUyMzQ2WhcNMzUwNDIz
+MTUyMzQ2WjAfMR0wGwYDVQQDDBRmMGcwdHQtdnBuamFudGl0LmNvbTCCASIwDQYJ
+KoZIhvcNAQEBBQADggEPADCCAQoCggEBAO3e8phWqIOkJ2XxD+jcaJi4SQmJyLOX
+n/7QpNwDY7WYOgE2PQr5umEl/XxjNgk3ceZcoM7+onJKFKbUEprtOAwyRU4VKvzA
+rnBIdboWyCFXLNaSzyih17e2MoMTw3uUkHnyKH/DX94JIdXomsmkyz0tlIW1zCLB
+ZGw1SkZLH66beUyeQRIv0nUygpvdcINjt8xnJjC/WToPmVKBFiWgSQKbElkNgPtt
+IJqnpG6CzdDqBByDaRHw3bXaL1wB8fkP9dgCYq8yRULnPI6TiUYTPOHGtVn6z9s+
+IUyImBHipekuWvHrNfw2HqxC9AqTbgyZ97TFwVBipU9AIWrf0wBlklsCAwEAAaOB
+ojCBnzAJBgNVHRMEAjAAMB0GA1UdDgQWBBTVYGU+fpwzFfZ4t5ZhkCsZ6Rne5DBR
+BgNVHSMESjBIgBQJa0S2r4cIdfipicKy60Jkxx089qEapBgwFjEUMBIGA1UEAwwL
+RWFzeS1SU0EgQ0GCFCvRo0wXf7bBR/QoUpEtJLpZGxGwMBMGA1UdJQQMMAoGCCsG
+AQUFBwMCMAsGA1UdDwQEAwIHgDANBgkqhkiG9w0BAQsFAAOCAQEAIkaZ+BxeSEEQ
+ByLYcIASphSVrHlxIbwuROrHV1ca4VDxkXq3pOYduWZ4a/ArZ23DfLfk2ox7o8pF
+KhHnP2dx/BHqLH94rpRjCVZcZthuujEkNB4QX920WW527WVMOD9MzRrVBCVT+k54
+gfMbISBoIx7NJDVH1a1JyhxyRHYmKVbsjzKImOyO6fkicPrA9jtn77r0cuHfOeXM
+53H3U3DoVQR3EjDHcRA17EUfiEjPSGX71Ouk5gIJ8PztSpLHfsgntUcwUgpg58co
+3uIwIG1m7Qr469K8LMc+BWBm0SBO6r9PSJmWkbxM+LcfZV2ICckyay/FbFx7nn0z
+Fi6tYUtBPg==
+-----END CERTIFICATE-----
+</cert>
+<key>
+-----BEGIN PRIVATE KEY-----
+MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDt3vKYVqiDpCdl
+8Q/o3GiYuEkJicizl5/+0KTcA2O1mDoBNj0K+bphJf18YzYJN3HmXKDO/qJyShSm
+1BKa7TgMMkVOFSr8wK5wSHW6FsghVyzWks8oode3tjKDE8N7lJB58ih/w1/eCSHV
+6JrJpMs9LZSFtcwiwWRsNUpGSx+um3lMnkESL9J1MoKb3XCDY7fMZyYwv1k6D5lS
+gRYloEkCmxJZDYD7bSCap6Rugs3Q6gQcg2kR8N212i9cAfH5D/XYAmKvMkVC5zyO
+k4lGEzzhxrVZ+s/bPiFMiJgR4qXpLlrx6zX8Nh6sQvQKk24Mmfe0xcFQYqVPQCFq
+39MAZZJbAgMBAAECggEAc9k3MXZTD/nsrjtfUju2PVrTR2/xbXYVGBcpk3WbJCAF
+b/2ocSX63cGQ2PnAoXB9aoIGV4mwOBVYRX/Xp9iMiXQaSNMKYpq82jaQD5d01LgO
+QFqzxcg8tV5o72m6tP8/9gQ4MTFICW1NK07jw/0cdqkyQoSt7OdfL0ws5ltEDNb/
+L7VoKeRYxIGjRIPqGuEJsqib1nRRjj/WiuU9FRTly8pmboBlWbdzn6tXB17g7vhh
+Ogzk465kGKoqemcS0U3rXpvvSI6Jz55gLIsmViXHCNNQ9kE/6lYa5XNrq5+mvK1g
+lK0wMdcSx86SnDPHxeLJAXhp6c6iOX53M6p7mb1JQQKBgQD68ymgusat8xXWZ2u3
+SgCi0mPgO8RkaATCtYeJ1giINLRrFAtgySy4sFXaciZnru5ZgIJ2YLR+tD64LoZk
+i7G9aLw/3et9RWmRp19tbOXQIt5lYdBSDPsyK6+Gaq5p7p1Lhqh629iaUFk143i8
+wEo3oo7LzIKGFBUvp1psbVEYcQKBgQDyqGe22k1ScXEpuawTeymWA4G0jUX25rlk
+K4iqwR2oQYH2KyS2Kedd9flApvV181MzgC/9MdO8nRuPhgRfkAsChCpB5rV2PlPZ
+n54V1qySuep2rhYiR0qbnzN/7WfFfx0GWvb6Vg+NYhP5xXV8RNT26eRaL/XG+NDy
+vb+zL2CdiwKBgEd5fn/C8teUhsG8TxezQh8d4Uh6fWNDpSd34JTHm0KAEGr3GI6G
+ffBUeP9wx7N8RXLEgWQKAx6bY8m9ppV4nDUgYY2nPW0+meTcUPevrnzrkYA6rcTQ
+4bLWcnXMaMTPK4nZXp8vgq/g9qe8lCTed8UEzbsKEprxmV8rQTvkntZhAoGAB+XN
+QllGjPleOoJthFDM4LIKharXbRrDS+xSzWPtqC1BopZy4m7otdksnJsSgB1ERvfU
+GASIJKpkXD57Y/TXNuTAT1bH7ypGJl4YkhNjmH7uj6BI3iK93eTHk1FRwE7Lzgol
+4a3tYaegiM+RbFL9L3AbW4gWErzEaDIezCEtntMCgYEAs/2fwYy6A1dOcqoj1V8c
+yXF4utMyxmK+n+IoYCUJhpbAYXMxvD+oCyrjZRszpr35wfG8GlPZ1zgSoDNa1ej7
+gqmbxIKFy5wfA861G9CWv7sC8DFTtXJcfVGJ5Eq/XCRUvMkVIK2mdUV3Ge74zI06
+ZvIN1ibLswQNWYZD626EMAE=
+-----END PRIVATE KEY-----
+</key>
+<tls-crypt>
+-----BEGIN OpenVPN Static key V1-----
+06d4f8a7103c03ff7cf124d2163ba423
+c5c0588bf7f437b6cf6560fe6e916738
+9b6b6931620eefd7ace896a406319808
+73d94c054acc4a6803eb2e63e55d4662
+186b48ad50fbd0360a2ddfa017ee4c0a
+89b08a4fcfa1122308115ac35a7b8b96
+6759e26d9bccc71349ac8c437faaa981
+7a46ba585d95cd4b7241573bb2aca05a
+966d035a2990d96d5f614c2492fc94e9
+ec556b5b3889c67171324fdba22117a4
+9a0f8b8adda0ccb38a836f6118d98217
+20e59284b70310e727947336189f2f73
+720a23a45d3ea08235ec74f3c625ee10
+4536ae6c09a9241697f947cd8d1c08fd
+14d96423f83b46cb8331dab0fa28f5b4
+921cd31450cf0e15a80440112084f530
+-----END OpenVPN Static key V1-----
+</tls-crypt>
