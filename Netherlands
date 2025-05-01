@@ -4,19 +4,13 @@
   },
   "inbounds": [
     {
+      "port": 10808,
       "listen": "127.0.0.1",
-      "port": 1080,
       "protocol": "socks",
       "settings": {
         "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
-      },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": ["http", "tls"]
-      },
-      "tag": "socks"
+        "udp": true
+      }
     }
   ],
   "outbounds": [
@@ -26,13 +20,11 @@
         "vnext": [
           {
             "address": "nl2.vpnjantit.com",
-            "port": 10004,
+            "port": 10002,
             "users": [
               {
-                "id": "2e2c34e4-26b0-11f0-9505-3f1337edf7e",
-                "encryption": "none",
-                "level": 8,
-                "security": "auto"
+                "id": "2e2c34e4-26b0-11f0-9505-3f13937edf7e",
+                "encryption": "none"
               }
             ]
           }
@@ -42,35 +34,12 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "serverName": "nl2.vpnjantit.com",
-          "allowInsecure": false
+          "serverName": "nl2.vpnjantit.com"
         },
         "wsSettings": {
-          "path": "/vless",
-          "headers": {
-            "Host": "nl2.vpnjantit.com"
-          }
+          "path": "/"
         }
-      },
-      "tag": "proxy"
-    },
-    {
-      "protocol": "freedom",
-      "settings": {},
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {
-        "response": {
-          "type": "http"
-        }
-      },
-      "tag": "block"
+      }
     }
-  ],
-  "routing": {
-    "domainStrategy": "IPIfNonMatch",
-    "rules": []
-  }
+  ]
 }
