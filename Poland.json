@@ -1,1 +1,3 @@
-vless://86d98672-cf80-11f0-9781-ef56c7fce388@pl2.vpnjantit.com:10002?encryption=none&security=tls&type=ws&path=%2fvpnjantit#f0g0ty-vpnjantit.com
+{
+  "vless": "vless://86d98672-cf80-11f0-9781-ef56c7fce388@pl2.vpnjantit.com:10002?encryption=none&security=tls&type=ws&path=%2fvpnjantit#f0g0ty-vpnjantit.com"
+}
