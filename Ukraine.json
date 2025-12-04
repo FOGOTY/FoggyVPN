@@ -1,4 +1,4 @@
 
 {
-  "vless": "vless://79347086-d0d9-11f0-b659-ab07956747dc@ua3.vpnjantit.com:10004?encryption=none&security=none&type=ws&path=%2fvpnjantit#f0g0ty-vpnjantit.com"
+  "vless": "vless://79347086-d0d9-11f0-b659-ab07956747dc@ua3.vpnjantit.com:10002?encryption=none&security=tls&type=ws&path=%2fvpnjantit#f0g0ty-vpnjantit.com"
 }
