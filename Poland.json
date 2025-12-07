@@ -1,3 +1,3 @@
 {
-  "vless": "vless://dd0d8552-d0de-11f0-bd91-835b6c8523f2@pl2.vpnjantit.com:10002?encryption=none&security=tls&type=ws&path=%2fvpnjantit#FoggyVPN-vpnjantit.com"
+  "trojan": "trojan://6tu6t-vpnjantit.com@pl2.vpnjantit.com:443?security=tls&type=tcp&headerType=none#6tu6t-vpnjantit.com"
 }
