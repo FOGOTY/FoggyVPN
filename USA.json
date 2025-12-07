@@ -1,3 +1,1 @@
-{
-  "vless": "vless://b7ff3d76-d12b-11f0-9f72-00163e6085c8@usa5.vpnjantit.com:10004?encryption=none&security=none&type=ws&path=%2fvpnjantit#FoggySoftworks-vpnjantit.com"
-}
+trojan://4et43tt43-vpnjantit.com@usa2.vpnjantit.com:443?security=tls&type=tcp&headerType=none#4et43tt43-vpnjantit.com
